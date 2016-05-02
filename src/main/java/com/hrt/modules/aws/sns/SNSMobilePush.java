@@ -65,7 +65,7 @@ public class SNSMobilePush {
 			/* TODO: Uncomment the services you wish to use. */
 			// sample.demoAndroidAppNotification();
 			// sample.demoKindleAppNotification();
-			// sample.demoAppleAppNotification();
+			 sample.demoAppleAppNotification();
 			// sample.demoAppleSandboxAppNotification();
 			// sample.demoBaiduAppNotification();
 			// sample.demoWNSAppNotification();
@@ -123,7 +123,7 @@ public class SNSMobilePush {
 									// end of each line.
 		String privateKey = ""; // This should be in pem format with \n at the
 								// end of each line.
-		String applicationName = "";
+		String applicationName = "HomeRoom";
 		String deviceToken = ""; // This is 64 hex characters.
 		snsClientWrapper.demoNotification(Platform.APNS, certificate,
 				privateKey, deviceToken, applicationName, attributesMap);
