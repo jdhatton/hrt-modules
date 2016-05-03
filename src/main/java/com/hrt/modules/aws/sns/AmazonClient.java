@@ -30,6 +30,7 @@ public class AmazonClient {
 		System.out.println("CreateTopicRequest - " + snsClient.getCachedResponseMetadata(createTopicRequest));
 
 		String topicArn = "arn:aws:sns:us-east-1:043482212558:homeroomclassroom_alldevices_MOBILEHUB_1264636960";
+		String applicationARN = "arn:aws:sns:us-west-2:043482212558:app/APNS/Homeroom-APNS";
 	}
 	
 	public void subscribeToTopic(){
