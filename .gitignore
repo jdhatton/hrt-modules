@@ -3,4 +3,5 @@
 .classpath
 ./target/*
 /target/*.*
-
+src/main/java/com/hrt/modules/aws/sns/AwsCredentials.properties
+AwsCredentials.properties
