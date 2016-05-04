@@ -7,13 +7,13 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.auth.PropertiesCredentials;
 import com.amazonaws.services.sns.AmazonSNS;
 import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.model.MessageAttributeValue;
 import com.amazonaws.services.sns.model.PublishRequest;
 import com.amazonaws.services.sns.model.PublishResult;
 import com.hrt.modules.aws.sns.SampleMessageGenerator.Platform;
+import com.hrt.modules.dto.AwsConfiguration;
 import com.hrt.modules.utils.StringUtils;
 
 public class AmazonSNSPublisher {
@@ -33,38 +33,35 @@ public class AmazonSNSPublisher {
 		this.snsClient = client;
 	}
 	
-	public void sendNotification(String message, int badge, String sound) throws Exception {
-		
-		//AmazonSNS sns = new AmazonSNSClient(new PropertiesCredentials(SNSMobilePush.class.getResourceAsStream("AwsCredentials.properties")));
-		
-		AmazonSNS sns = new AmazonSNSClient(new AccessCredentials("",""));
+	public void sendNotification(String deviceToken, String message, int badge, String sound, AwsConfiguration awsConf) throws Exception {
+
+		// AmazonSNS sns = new AmazonSNSClient(new
+		// AccessCredentials("AKIAJGE6YKV7ZOB2BU2Q","VHNI9fZcMQirkslT9juVpodG4Mf94ixv7CXRuc4s"));
+
+		AmazonSNS sns = new AmazonSNSClient(
+				new AccessCredentials(awsConf.getAwsAccessKey(), awsConf.getAwsSecretKey()));
 
 		sns.setEndpoint("https://sns.us-west-2.amazonaws.com");
-		System.out.println("===========================================\n");
-		System.out.println("Sending Amazon SNS");
-		System.out.println("===========================================\n");
+
 		try {
 			SNSMobilePush sample = new SNSMobilePush(sns);
-			// sample.demoAndroidAppNotification();
-			 sample.demoAppleAppNotification();
-			// sample.demoAppleSandboxAppNotification();
+
+			sample.demoAppleAppNotification();
+
 		} catch (AmazonServiceException ase) {
-			System.out
-					.println("Caught an AmazonServiceException, which means your request made it "
-							+ "to Amazon SNS, but was rejected with an error response for some reason.");
+			System.out.println("Caught an AmazonServiceException, which means your request made it "
+					+ "to Amazon SNS, but was rejected with an error response for some reason.");
 			System.out.println("Error Message:    " + ase.getMessage());
 			System.out.println("HTTP Status Code: " + ase.getStatusCode());
 			System.out.println("AWS Error Code:   " + ase.getErrorCode());
 			System.out.println("Error Type:       " + ase.getErrorType());
 			System.out.println("Request ID:       " + ase.getRequestId());
 		} catch (AmazonClientException ace) {
-			System.out
-					.println("Caught an AmazonClientException, which means the client encountered "
-							+ "a serious internal problem while trying to communicate with SNS, such as not "
-							+ "being able to access the network.");
+			System.out.println("Caught an AmazonClientException, which means the client encountered "
+					+ "a serious internal problem while trying to communicate with SNS, such as not "
+					+ "being able to access the network.");
 			System.out.println("Error Message: " + ace.getMessage());
 		}
-		
 	}
 	
 	private PublishResult publish(String endpointArn, Platform platform,
