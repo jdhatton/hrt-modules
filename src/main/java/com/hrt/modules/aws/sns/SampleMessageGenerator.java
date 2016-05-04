@@ -65,8 +65,8 @@ public class SampleMessageGenerator {
 	public static String getSampleAppleMessage() {
 		Map<String, Object> appleMessageMap = new HashMap<String, Object>();
 		Map<String, Object> appMessageMap = new HashMap<String, Object>();
-		appMessageMap.put("alert", "You have got email.");
-		appMessageMap.put("badge", 9);
+		appMessageMap.put("alert", "Yo dood it worked.");
+		appMessageMap.put("badge", 1);
 		appMessageMap.put("sound", "default");
 		appleMessageMap.put("aps", appMessageMap);
 		return jsonify(appleMessageMap);
