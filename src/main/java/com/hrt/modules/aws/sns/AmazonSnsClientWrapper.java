@@ -124,8 +124,7 @@ public class AmazonSnsClientWrapper {
 
 		// The Platform Application Arn can be used to uniquely identify the
 		// Platform Application.
-		String platformApplicationArn = platformApplicationResult
-				.getPlatformApplicationArn();
+		String platformApplicationArn = platformApplicationResult.getPlatformApplicationArn();
 
 		// Create an Endpoint. This corresponds to an app on a device.
 		CreatePlatformEndpointResult platformEndpointResult = createPlatformEndpoint(
