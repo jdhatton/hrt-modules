@@ -20,7 +20,6 @@ import java.util.Map;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.auth.PropertiesCredentials;
 import com.amazonaws.services.sns.AmazonSNS;
 import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.model.MessageAttributeValue;
@@ -163,7 +162,7 @@ public class SNSMobilePush {
 		
 		String applicationName = "Homeroom-Notifications";
 		
-		String deviceToken = "003c281b1775a02c6ad71859707d194302b813ca68d03c9d68ea8ca893c5ae87"; // This is 64 hex characters.
+		String deviceToken = "8556caa92a29b24bc3f95502189001efadef6cf11bf654422768feaa5378b4dc"; // This is 64 hex characters.
 		snsClientWrapper.demoNotification(Platform.APNS_SANDBOX, certificate,
 				privateKey, deviceToken, applicationName, attributesMap);
 	}
