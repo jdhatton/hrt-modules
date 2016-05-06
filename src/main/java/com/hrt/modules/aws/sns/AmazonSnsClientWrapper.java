@@ -118,35 +118,35 @@ public class AmazonSnsClientWrapper {
 			Map<Platform, Map<String, MessageAttributeValue>> attrsMap) {
 		// Create Platform Application. This corresponds to an app on a
 		// platform.
-//		CreatePlatformApplicationResult platformApplicationResult = createPlatformApplication(
-//				applicationName, platform, principal, credential);
-//		System.out.println(platformApplicationResult);
-//
-//		// The Platform Application Arn can be used to uniquely identify the
-//		// Platform Application.
-//		String platformApplicationArn = platformApplicationResult.getPlatformApplicationArn();
-//
-//		// Create an Endpoint. This corresponds to an app on a device.
-//		CreatePlatformEndpointResult platformEndpointResult = createPlatformEndpoint(
-//				platform,
-//				"CustomData - Useful to store endpoint specific data",
-//				platformToken, platformApplicationArn);
-//		System.out.println(platformEndpointResult);
-//		
-//		System.out.println("\n\n>>>>>>    platformEndpointResult.getEndpointArn()  =  "+ platformEndpointResult.getEndpointArn() +"\n\n");
+		CreatePlatformApplicationResult platformApplicationResult = createPlatformApplication(
+				applicationName, platform, principal, credential);
+		System.out.println(platformApplicationResult);
+
+		// The Platform Application Arn can be used to uniquely identify the
+		// Platform Application.
+		String platformApplicationArn = platformApplicationResult.getPlatformApplicationArn();
+
+		// Create an Endpoint. This corresponds to an app on a device.
+		CreatePlatformEndpointResult platformEndpointResult = createPlatformEndpoint(
+				platform,
+				"CustomData - Useful to store endpoint specific data",
+				platformToken, platformApplicationArn);
+		System.out.println(platformEndpointResult);
+		
+		System.out.println("\n\n>>>>>>    platformEndpointResult.getEndpointArn()  =  "+ platformEndpointResult.getEndpointArn() +"\n\n");
 
 		
-		String ARN = "arn:aws:sns:us-west-2:043482212558:endpoint/APNS_SANDBOX/Homeroom-Notifications/6c6c1c8e-19be-3a9c-82e4-b5fab2e2a603";
-		PublishResult publishResult = publish( ARN, platform, attrsMap);
+//		String ARN = "arn:aws:sns:us-west-2:043482212558:endpoint/APNS_SANDBOX/Homeroom-Notifications/6c6c1c8e-19be-3a9c-82e4-b5fab2e2a603";
+//		PublishResult publishResult = publish( ARN, platform, attrsMap);
 		
 		// Publish a push notification to an Endpoint.
-//		PublishResult publishResult = publish( platformEndpointResult.getEndpointArn(), platform, attrsMap);
+	  PublishResult publishResult = publish( platformEndpointResult.getEndpointArn(), platform, attrsMap);
 		System.out.println("Published! \n{MessageId="+ publishResult.getMessageId() + "}");
 		
 		
 		
 		// Delete the Platform Application since we will no longer be using it.
-//		deletePlatformApplication(platformApplicationArn);
+		deletePlatformApplication(platformApplicationArn);
 	}
 
 	private String getPlatformSampleMessage(Platform platform) {
