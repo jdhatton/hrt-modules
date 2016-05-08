@@ -162,7 +162,7 @@ public class SNSMobilePush {
 		
 		String applicationName = "Homeroom-Notifications";
 		
-		String deviceToken = "0b4847603c3570946b218d9f3df1dc33be20f72c2079e6dbbafe6e647cbe9f4f"; // This is 64 hex characters.
+		String deviceToken = "ec57d68d2cc07508db7e01acca17ed80b95cfd9eca00b94d27b87776c4d0e39d"; // This is 64 hex characters.
 		snsClientWrapper.demoNotification(Platform.APNS_SANDBOX, certificate,
 				privateKey, deviceToken, applicationName, attributesMap);
 	}
